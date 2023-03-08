@@ -20,7 +20,6 @@ export default function Home() {
     <>
       <motion.main className={styles.main}>
         <AnimatePresence>
-          {/* <div onPointerDown={startDrag} /> */}
           <motion.div
             className={styles.textWrapper}
             initial={{ width: "375px" }}
