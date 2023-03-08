@@ -1,0 +1,27 @@
+@use "./color_variables.scss" as *;
+
+@mixin d-flex-justify_align-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main {
+  @include d-flex-justify_align-center();
+  height: 75vh;
+}
+
+.tabsWrapper {
+  @include d-flex-justify_align-center();
+}
+
+.textWrapper {
+  padding: 0.25px 24px;
+  text-align: center;
+  cursor: grab;
+}
+
+.h1 {
+  font-size: 10px;
+  font-weight: 300;
+}
