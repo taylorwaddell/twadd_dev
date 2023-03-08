@@ -23,8 +23,8 @@ export default function Home() {
           {/* <div onPointerDown={startDrag} /> */}
           <motion.div
             className={styles.textWrapper}
-            initial={{ width: "275px" }}
-            animate={{ width: "175px" }}
+            initial={{ width: "375px" }}
+            animate={{ width: "275px" }}
             transition={{ type: "spring", stiffness: 100 }}
             whileTap={{ scale: 0.9, cursor: "grabbing" }}
             drag={true}

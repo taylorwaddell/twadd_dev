@@ -55,6 +55,7 @@ const Tabs = () => {
         {tabsData.map((tab) => (
           <Tab
             href={tab.link}
+            target="_blank"
             key={tab.value}
             tabValue={tab.value}
             onMouseOver={(ev) => repositionHighlight(ev, tab)}
