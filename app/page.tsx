@@ -12,10 +12,6 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   const controls = useDragControls();
 
-  function startDrag(event: unknown) {
-    controls.start(event as PointerEvent, { snapToCursor: true });
-  }
-
   return (
     <>
       <motion.main className={styles.main}>
