@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import prefersDark from "./DetectThemePreference";
 import styled from "styled-components";
@@ -18,9 +18,15 @@ const Tabs = () => {
   const [highlightedTab, setHighlightedTab] = useState(null);
   const [isHoveredFromNull, setIsHoveredFromNull] = useState(true);
   const [isBeingPressed, setIsBeingPressed] = useState(false);
+  const [prefersDark, setPrefersDark] = useState(true);
 
   const highlightRef = useRef(null);
   const wrapperRef = useRef(null);
+
+  useEffect(() => {
+    const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
+    setPrefersDark(() => darkThemeMq.matches ? true : false);
+  }, []);
 
   const repositionHighlight = (e: MouseEvent, tab: unknown) => {
     setTabBoundingBox(e.target.getBoundingClientRect());
@@ -41,7 +47,9 @@ const Tabs = () => {
       tabBoundingBox.left - wrapperBoundingBox.left
     }px)`;
     if (isBeingPressed) {
-      highlightStyles.boxShadow = `inset 1px 2px 4px 1px ${prefersDark() ? 'rgb(29, 29, 29)' : 'rgb(229, 229, 229)'}`;
+      highlightStyles.boxShadow = `inset 1px 2px 4px 1px ${
+        prefersDark ? "rgb(29, 29, 29)" : "rgb(229, 229, 229)"
+      }`;
     }
   }
 
@@ -77,8 +85,8 @@ interface TabProps {
 
 const TabsNav = styled.div`
   position: relative;
-  color: ${prefersDark() ? 'rgb(229, 229, 229)' : 'rgb(29, 29, 29)'};
-  background-color: ${prefersDark() ? 'rgb(20, 20, 20)' : 'rgb(220, 220, 220)'};
+  color: ${prefersDark ? "rgb(229, 229, 229)" : "rgb(29, 29, 29)"};
+  background-color: ${prefersDark ? "rgb(220, 220, 220)" : "rgb(20, 20, 20)"};
   border-radius: 10px;
   padding: 5px;
 `;
@@ -86,7 +94,7 @@ const TabsNav = styled.div`
 const Tab = styled.a<TabProps>`
   padding: 15px;
   font-size: ${14 / 16}rem;
-  color: ${prefersDark() ? 'rgb(229, 229, 229)' : 'rgb(29, 29, 29)'};
+  color: ${prefersDark ? "rgb(229, 229, 229)" : "rgb(29, 29, 29)"};
   display: inline-block;
   position: relative;
   cursor: pointer;
@@ -96,7 +104,7 @@ const Tab = styled.a<TabProps>`
 `;
 
 const TabsHighlight = styled.div`
-  background: ${prefersDark() ? 'rgb(90, 90, 90)' : 'rgb(290, 290, 290)'};
+  background: ${prefersDark ? "rgb(90, 90, 90)" : "rgb(290, 290, 290)"};
   position: absolute;
   top: 4.5px;
   left: 0;
@@ -104,7 +112,7 @@ const TabsHighlight = styled.div`
   height: 46px;
   transition: 0.15s ease;
   transition-property: width, transform, opacity;
-  border: 1px ${prefersDark() ? 'rgb(20, 20, 20)' : 'rgb(220, 220, 220)'} solid;
+  border: 1px ${prefersDark ? "rgb(20, 20, 20)" : "rgb(220, 220, 220)"} solid;
 `;
 
 const ContainerFlexColumn = styled.div`
