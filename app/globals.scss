@@ -1,7 +1,17 @@
 @use './color_variables.scss' as *;
 
-html,
-body {
-  background-color: $backgroundColor;
-  color: $white;
+
+@media (prefers-color-scheme: light) {
+  html,
+  body {
+    background-color: $backgroundColor-light;
+    color: $secondary-light;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  html,
+  body {
+    background-color: $backgroundColor-dark;
+    color: $secondary-dark;
+  }
 }

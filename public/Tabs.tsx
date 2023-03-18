@@ -1,12 +1,9 @@
 // @ts-nocheck
 
-import styled, { css, keyframes } from "styled-components";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
-import CameraSVG from "./JSX-icons/CameraSVG";
-import DribbbleSVG from "./JSX-icons/DribbbleSVG";
-import GithubSVG from "./JSX-icons/GithubSVG";
-import TwitterSVG from "./JSX-icons/TwitterSVG";
+import prefersDark from "./DetectThemePreference";
+import styled from "styled-components";
 
 const tabsData = [
   { title: "github", link: "https://github.com/taylorwaddell", value: 1 },
@@ -44,7 +41,7 @@ const Tabs = () => {
       tabBoundingBox.left - wrapperBoundingBox.left
     }px)`;
     if (isBeingPressed) {
-      highlightStyles.boxShadow = "inset 1px 2px 4px 1px rgb(29, 29, 29)";
+      highlightStyles.boxShadow = `inset 1px 2px 4px 1px ${prefersDark() ? 'rgb(29, 29, 29)' : 'rgb(229, 229, 229)'}`;
     }
   }
 
@@ -80,8 +77,8 @@ interface TabProps {
 
 const TabsNav = styled.div`
   position: relative;
-  color: rgb(229, 229, 229);
-  background-color: rgb(20, 20, 20);
+  color: ${prefersDark() ? 'rgb(229, 229, 229)' : 'rgb(29, 29, 29)'};
+  background-color: ${prefersDark() ? 'rgb(20, 20, 20)' : 'rgb(220, 220, 220)'};
   border-radius: 10px;
   padding: 5px;
 `;
@@ -89,7 +86,7 @@ const TabsNav = styled.div`
 const Tab = styled.a<TabProps>`
   padding: 15px;
   font-size: ${14 / 16}rem;
-  color: rgb(229, 229, 229);
+  color: ${prefersDark() ? 'rgb(229, 229, 229)' : 'rgb(29, 29, 29)'};
   display: inline-block;
   position: relative;
   cursor: pointer;
@@ -99,7 +96,7 @@ const Tab = styled.a<TabProps>`
 `;
 
 const TabsHighlight = styled.div`
-  background: rgb(90, 90, 90);
+  background: ${prefersDark() ? 'rgb(90, 90, 90)' : 'rgb(290, 290, 290)'};
   position: absolute;
   top: 4.5px;
   left: 0;
@@ -107,7 +104,7 @@ const TabsHighlight = styled.div`
   height: 46px;
   transition: 0.15s ease;
   transition-property: width, transform, opacity;
-  border: 1px rgb(20, 20, 20) solid;
+  border: 1px ${prefersDark() ? 'rgb(20, 20, 20)' : 'rgb(220, 220, 220)'} solid;
 `;
 
 const ContainerFlexColumn = styled.div`
