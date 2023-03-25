@@ -1,13 +1,12 @@
 // @ts-nocheck
 
-import { useRef, useState, useEffect } from "react";
-
 // import prefersDark from "./DetectThemePreference";
 import styled, {css} from "styled-components";
+import { useEffect, useRef, useState } from "react";
 
 const tabsData = [
   { title: "github", link: "https://github.com/taylorwaddell", value: 1 },
-  { title: "dribble", link: "https://dribbble.com/twadd", value: 2 },
+  { title: "dribbble", link: "https://dribbble.com/twadd", value: 2 },
   { title: "photos", link: "https://taylorwaddell.com/", value: 3 },
   { title: "twitter", link: "https://twitter.com/t__wadd", value: 4 },
 ];
